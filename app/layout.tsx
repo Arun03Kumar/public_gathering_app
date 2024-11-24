@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/providers/theme-providers";
 import { cn } from "@/lib/utils";
+import { ModalProvider } from "@/components/providers/modal-providers";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -30,7 +31,8 @@ export default function RootLayout({
               enableSystem
               storageKey="app-theme"
             >
-            {children}
+              <ModalProvider />
+              {children}
             </ThemeProvider>
           </body>
       </html>
