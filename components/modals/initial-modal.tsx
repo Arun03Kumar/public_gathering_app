@@ -11,6 +11,7 @@ import {Button} from "@/components/ui/button"
 import { FileUpload } from "../file-upload"
 import axios from "axios"
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 const formSchema = z.object({
     name: z.string().min(1, {
@@ -22,6 +23,11 @@ const formSchema = z.object({
 })
 
 export const InitialModal = () => {
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+      }, []);
+      
     const router = useRouter()
 
     const form = useForm({
@@ -43,6 +49,10 @@ export const InitialModal = () => {
         catch(error) {
             console.log(error)
         }
+    }
+
+    if (!isMounted) {
+        return null;
     }
 
     return (
