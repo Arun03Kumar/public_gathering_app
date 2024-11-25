@@ -9,7 +9,7 @@ interface InviteCodePageProps {
     }
 }
 
-export const InvitePage = async ({params}: InviteCodePageProps) => {
+const InvitePage = async ({params}: InviteCodePageProps) => {
     const profile = await currentProfile()
     if(!profile) return auth().redirectToSignIn()
     if(!params.inviteCode) return redirect("/")
@@ -46,3 +46,7 @@ export const InvitePage = async ({params}: InviteCodePageProps) => {
 
   return null
 }
+
+export default InvitePage
+
+
